@@ -94,7 +94,18 @@ namespace AlgorithmsPlayground.DataStructures.Lists
 
         public void AddToTail(int value)
         {
-            throw new NotImplementedException();
+            Node node = new Node(value);
+            if(Head == null)
+            {
+                Head = node;
+                return;
+            }
+            var runner = Head;
+            while(runner.Next != null)
+            {
+                runner = runner.Next;
+            }
+            runner.Next = node;
         }
     }
 }
