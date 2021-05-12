@@ -39,6 +39,19 @@ namespace AlgorithmsPlayground.DataStructures.Lists
         }
         
         [TestMethod]
+        public void GetAtIndexOutOfBoundsTest()
+        {
+            var list = new SingleLinkedList();
+            list.AddToHead(3);
+            list.AddToHead(4);
+            list.AddToHead(6);
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.GetAtIndex(100);
+            }, "When requesting an object out of range an ArgumentOutOfRangeException should be thrown");
+        }
+        
+        [TestMethod]
         public void CountElementsTest()
         {
             var list = new SingleLinkedList();
