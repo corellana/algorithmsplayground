@@ -1,6 +1,6 @@
 using System;
 
-namespace AlgorithmsPlayground.Lists
+namespace AlgorithmsPlayground.DataStructures.Lists
 {
     public class SingleLinkedList
     {

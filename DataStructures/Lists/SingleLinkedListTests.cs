@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AlgorithmsPlayground.Lists
+namespace AlgorithmsPlayground.DataStructures.Lists
 {
     [TestClass]
     public class SingleLinkedListTests
@@ -19,7 +19,6 @@ namespace AlgorithmsPlayground.Lists
         public void IsEmptyTest()
         {
             var list = new SingleLinkedList();
-
             Assert.IsTrue(list.IsEmpty(), "A new list should be empty");
             
             list.AddToHead(3);
