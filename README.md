@@ -1,0 +1,2 @@
+## Usage
+> dotnet test
