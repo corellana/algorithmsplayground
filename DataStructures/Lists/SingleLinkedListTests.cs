@@ -49,6 +49,21 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
                 list.GetAtIndex(100);
             }, "When requesting an object out of range an ArgumentOutOfRangeException should be thrown");
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.GetAtIndex(-1);
+            }, "When requesting an object on a negative index an ArgumentOutOfRangeException should be thrown");
+        }
+
+
+        [TestMethod]
+        public void GetAtIndexEmptyListTest()
+        {
+            var list = new SingleLinkedList();
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.GetAtIndex(0);
+            }, "When requesting an object out of range an ArgumentOutOfRangeException should be thrown");
         }
         
         [TestMethod]
@@ -75,6 +90,35 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             var deletedElement = list.DeleteAtIndex(1);
             Assert.AreEqual(4, deletedElement, "The the list has a 4 on the index 1 position");
             Assert.AreEqual(2, list.Count, "The list should declare it has 2 elements");
+        }
+
+        [TestMethod]
+        public void DeleteAtIndexEmptyListTest()
+        {
+            var list = new SingleLinkedList();
+            
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.DeleteAtIndex(0);
+            }, "When deleting an object out of range an ArgumentOutOfRangeException should be thrown");
+        }
+        
+        [TestMethod]
+        public void DeleteAtIndexOutOfBoundsTest()
+        {
+            var list = new SingleLinkedList();
+            list.AddToHead(3);
+            list.AddToHead(4);
+            list.AddToHead(6);
+
+            
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.DeleteAtIndex(5);
+            }, "When deleting an object out of range an ArgumentOutOfRangeException should be thrown");
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.DeleteAtIndex(-1);
+            }, "When deleting an object on a negative index ArgumentOutOfRangeException should be thrown");
+
         }
 
 
