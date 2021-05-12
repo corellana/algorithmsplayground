@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AlgorithmsPlayground.DataStructures.Lists
@@ -34,6 +35,7 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             list.AddToHead(6);
 
             Assert.AreEqual(6, list.GetAtIndex(0), "The first element of the list should be 6");
+            Assert.AreEqual(4, list.GetAtIndex(1), "The second element of the list should be 4");
         }
         
         [TestMethod]
@@ -60,6 +62,21 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             var deletedElement = list.DeleteAtIndex(1);
             Assert.AreEqual(4, deletedElement, "The the list has a 4 on the index 1 position");
             Assert.AreEqual(2, list.Count, "The list should declare it has 2 elements");
+        }
+
+
+        [TestMethod]
+        public void AddToTailTest()
+        {
+            var list = new SingleLinkedList();
+            list.AddToTail(3);
+            list.AddToHead(4);
+            list.AddToTail(6);
+
+            Assert.AreEqual(3, list.Count, "The list should declare it has 3 elements");
+            Assert.AreEqual(4, list.GetAtIndex(0), "The first element of the list should be 6");
+            Assert.AreEqual(3, list.GetAtIndex(1), "The second element of the list should be 6");
+            Assert.AreEqual(6, list.GetAtIndex(2), "The third element of the list should be 6");
         }
     }
 }

@@ -91,5 +91,10 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             runner.Next = runner.Next.Next;
             return deletedElement;
         }
+
+        public void AddToTail(int value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
