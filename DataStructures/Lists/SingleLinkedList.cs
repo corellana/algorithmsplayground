@@ -137,5 +137,10 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             }
             runner.Next = node;
         }
+
+        internal Node GetNodeAtIndex(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

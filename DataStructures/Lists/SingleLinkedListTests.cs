@@ -7,16 +7,6 @@ namespace AlgorithmsPlayground.DataStructures.Lists
     public class SingleLinkedListTests
     {
         [TestMethod]
-        public void AddElementsTest()
-        {
-            var list = new SingleLinkedList();
-
-            list.AddToHead(3);
-            list.AddToHead(4);
-            list.AddToHead(6);
-        }
-
-        [TestMethod]
         public void IsEmptyTest()
         {
             var list = new SingleLinkedList();
@@ -29,22 +19,16 @@ namespace AlgorithmsPlayground.DataStructures.Lists
         [TestMethod]
         public void GetAtIndexTest()
         {
-            var list = new SingleLinkedList();
-            list.AddToHead(3);
-            list.AddToHead(4);
-            list.AddToHead(6);
+            var list = MakeTestList();
 
             Assert.AreEqual(6, list.GetAtIndex(0), "The first element of the list should be 6");
             Assert.AreEqual(4, list.GetAtIndex(1), "The second element of the list should be 4");
         }
-        
+
         [TestMethod]
         public void GetAtIndexOutOfBoundsTest()
         {
-            var list = new SingleLinkedList();
-            list.AddToHead(3);
-            list.AddToHead(4);
-            list.AddToHead(6);
+            var list = MakeTestList();
 
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
                 list.GetAtIndex(100);
@@ -55,7 +39,6 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             }, "When requesting an object on a negative index an ArgumentOutOfRangeException should be thrown");
         }
 
-
         [TestMethod]
         public void GetAtIndexEmptyListTest()
         {
@@ -65,27 +48,22 @@ namespace AlgorithmsPlayground.DataStructures.Lists
                 list.GetAtIndex(0);
             }, "When requesting an object out of range an ArgumentOutOfRangeException should be thrown");
         }
-        
+
         [TestMethod]
         public void CountElementsTest()
         {
-            var list = new SingleLinkedList();
-            Assert.AreEqual(0, list.Count, "An empty list should report a 0 count");
+            var list1 = new SingleLinkedList();
+            Assert.AreEqual(0, list1.Count, "An empty list should report a 0 count");
 
-            list.AddToHead(3);
-            list.AddToHead(4);
-            list.AddToHead(6);
+            var list2 = MakeTestList();
 
-            Assert.AreEqual(3, list.Count, "The list should declare it has 3 elements");
+            Assert.AreEqual(3, list2.Count, "The list should declare it has 3 elements");
         }
 
         [TestMethod]
         public void DeleteAtIndexTest()
         {
-            var list = new SingleLinkedList();
-            list.AddToHead(3);
-            list.AddToHead(4);
-            list.AddToHead(6);
+            var list = MakeTestList();
 
             var deletedElement = list.DeleteAtIndex(1);
             Assert.AreEqual(4, deletedElement, "The the list has a 4 on the index 1 position");
@@ -105,12 +83,8 @@ namespace AlgorithmsPlayground.DataStructures.Lists
         [TestMethod]
         public void DeleteAtIndexOutOfBoundsTest()
         {
-            var list = new SingleLinkedList();
-            list.AddToHead(3);
-            list.AddToHead(4);
-            list.AddToHead(6);
+            var list = MakeTestList();
 
-            
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
                 list.DeleteAtIndex(5);
             }, "When deleting an object out of range an ArgumentOutOfRangeException should be thrown");
@@ -118,22 +92,62 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
                 list.DeleteAtIndex(-1);
             }, "When deleting an object on a negative index ArgumentOutOfRangeException should be thrown");
-
         }
-
 
         [TestMethod]
         public void AddToTailTest()
         {
-            var list = new SingleLinkedList();
-            list.AddToTail(3);
-            list.AddToHead(4);
-            list.AddToTail(6);
+            var list = MakeTestList();
 
             Assert.AreEqual(3, list.Count, "The list should declare it has 3 elements");
-            Assert.AreEqual(4, list.GetAtIndex(0), "The first element of the list should be 6");
-            Assert.AreEqual(3, list.GetAtIndex(1), "The second element of the list should be 6");
-            Assert.AreEqual(6, list.GetAtIndex(2), "The third element of the list should be 6");
+            Assert.AreEqual(4, list.GetNodeAtIndex(0).Value, "The first element of the list should be 6");
+            Assert.AreEqual(3, list.GetNodeAtIndex(1).Value, "The second element of the list should be 6");
+            Assert.AreEqual(6, list.GetNodeAtIndex(2).Value, "The third element of the list should be 6");
+        }
+
+        [TestMethod]
+        public void GetNodeAtIndexTest()
+        {
+            var list = MakeTestList();
+
+            var deletedElement = list.DeleteAtIndex(1);
+            Assert.AreEqual(4, deletedElement, "The the list has a 4 on the index 1 position");
+            Assert.AreEqual(2, list.Count, "The list should declare it has 2 elements");
+        }
+
+        [TestMethod]
+        public void GetNodeAtIndexEmptyListTest()
+        {
+            var list = new SingleLinkedList();
+            
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.GetNodeAtIndex(0);
+            }, "When deleting an object out of range an ArgumentOutOfRangeException should be thrown");
+        }
+        
+        [TestMethod]
+        public void GetNodeAtIndexOutOfBoundsTest()
+        {
+            var list = MakeTestList();
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.GetNodeAtIndex(5);
+            }, "When deleting an object out of range an ArgumentOutOfRangeException should be thrown");
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => {
+                list.GetNodeAtIndex(-1);
+            }, "When deleting an object on a negative index ArgumentOutOfRangeException should be thrown");
+        }
+
+        // A helper function to get a simple list created
+        private SingleLinkedList MakeTestList()
+        {
+            var list = new SingleLinkedList();
+            list.AddToHead(3);
+            list.AddToHead(4);
+            list.AddToHead(6);
+
+            return list;
         }
     }
 }
