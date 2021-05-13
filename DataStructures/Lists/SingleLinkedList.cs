@@ -57,6 +57,15 @@ namespace AlgorithmsPlayground.DataStructures.Lists
 
         public int GetAtIndex(int index)
         {
+            // Case negative index
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (Head == null)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             if(index == 0)
             {
                 return Head.Value;
@@ -64,6 +73,11 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             var runner = Head;
             for(int i=1; i<index; i++)
             {
+                // Case out of range
+                if (runner.Next == null)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
                 runner = runner.Next;
             }
             if(runner.Next == null)
@@ -75,6 +89,17 @@ namespace AlgorithmsPlayground.DataStructures.Lists
 
         public int DeleteAtIndex(int index)
         {
+            // Case negative index
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            
+            // Case empty list
+            if(Head == null)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             int deletedElement;
             if(index == 0)
             {
@@ -85,6 +110,11 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             var runner = Head;
             for(int jumps=0; jumps < index-1; jumps++)
             {
+                // Case out of range
+                if (runner.Next == null)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
                 runner = runner.Next;
             }
             deletedElement = runner.Next.Value;
