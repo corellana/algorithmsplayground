@@ -95,24 +95,14 @@ namespace AlgorithmsPlayground.DataStructures.Lists
         }
 
         [TestMethod]
-        public void AddToTailTest()
-        {
-            var list = MakeTestList();
-
-            Assert.AreEqual(3, list.Count, "The list should declare it has 3 elements");
-            Assert.AreEqual(4, list.GetNodeAtIndex(0).Value, "The first element of the list should be 6");
-            Assert.AreEqual(3, list.GetNodeAtIndex(1).Value, "The second element of the list should be 6");
-            Assert.AreEqual(6, list.GetNodeAtIndex(2).Value, "The third element of the list should be 6");
-        }
-
-        [TestMethod]
         public void GetNodeAtIndexTest()
         {
             var list = MakeTestList();
 
-            var deletedElement = list.DeleteAtIndex(1);
-            Assert.AreEqual(4, deletedElement, "The the list has a 4 on the index 1 position");
-            Assert.AreEqual(2, list.Count, "The list should declare it has 2 elements");
+            Assert.AreEqual(3, list.Count, "The list should declare it has 3 elements");
+            Assert.AreEqual(6, list.GetNodeAtIndex(0).Value, "The first element of the list should be 6");
+            Assert.AreEqual(4, list.GetNodeAtIndex(1).Value, "The second element of the list should be 6");
+            Assert.AreEqual(3, list.GetNodeAtIndex(2).Value, "The third element of the list should be 6");
         }
 
         [TestMethod]

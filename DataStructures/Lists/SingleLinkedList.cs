@@ -18,6 +18,7 @@ namespace AlgorithmsPlayground.DataStructures.Lists
 
 
         public int Count {
+            
             get {
                 if(IsEmpty())
                 {
@@ -87,6 +88,35 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             return runner.Next.Value;
         }
 
+
+        internal Node GetNodeAtIndex(int index)
+        {
+            // GetNodeAtIndex EmptyList
+            if (Head == null)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            // GetNodeAtIndex OutOfBounds
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            var runner = Head;
+            for (int counter = 0; counter < index; counter++)
+            {
+                // GetNodeAtIndex OutOfBounds 
+                if (runner.Next == null)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                runner = runner.Next;
+
+            }
+            return runner;
+        }
+
         public int DeleteAtIndex(int index)
         {
             // Case negative index
@@ -136,11 +166,6 @@ namespace AlgorithmsPlayground.DataStructures.Lists
                 runner = runner.Next;
             }
             runner.Next = node;
-        }
-
-        internal Node GetNodeAtIndex(int index)
-        {
-            throw new NotImplementedException();
         }
     }
 }
