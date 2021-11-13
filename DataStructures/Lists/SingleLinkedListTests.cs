@@ -138,6 +138,8 @@ namespace AlgorithmsPlayground.DataStructures.Lists
 
             list.RemoveDuplicates();
 
+            Assert.AreEqual("8 3 6 4", list.ToString(), "remove duplicates failed");
+
             Assert.AreEqual(8, list.GetAtIndex(0), "The first element of the list should be 8");
             Assert.AreEqual(3, list.GetAtIndex(1), "The second element of the list should be 6");
             Assert.AreEqual(6, list.GetAtIndex(2), "The third element of the list should be 4");

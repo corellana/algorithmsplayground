@@ -169,6 +169,18 @@ namespace AlgorithmsPlayground.DataStructures.Lists
             runner.Next = node;
         }
 
+        public string ToString()
+        {
+            string list = Head.Value.ToString();
+            var runner = Head.Next;
+            while (runner != null)
+            {
+                list += " " + runner.Value;
+                runner = runner.Next;
+            }
+            return list;
+        }
+
         internal void RemoveDuplicates()
         {
             // Track duplicates with a dictionary
