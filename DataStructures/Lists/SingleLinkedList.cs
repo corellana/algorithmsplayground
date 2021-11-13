@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace AlgorithmsPlayground.DataStructures.Lists
 {
@@ -166,6 +167,28 @@ namespace AlgorithmsPlayground.DataStructures.Lists
                 runner = runner.Next;
             }
             runner.Next = node;
+        }
+
+        internal void RemoveDuplicates()
+        {
+            // Track duplicates with a dictionary
+            HashSet<int> set = new HashSet<int>();
+            Node previous = null;
+            Node runner = Head;
+            
+            while (runner != null)
+            {
+                if (set.Contains(runner.Value))
+                {
+                    previous.Next = runner.Next;
+                } else
+                {
+                    set.Add(runner.Value);
+                    // Saving the last new node added
+                    previous = runner;
+                }
+                runner = runner.Next;
+            }
         }
     }
 }
